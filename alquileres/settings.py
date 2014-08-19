@@ -1,3 +1,5 @@
+
+
 """
 Django settings for alquileres project.
 
@@ -17,14 +19,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hao+xvoh#m1#a^4i3)3#d-75-rwa2c&ygr%b%66z%vrerc0*87'
+SECRET_KEY = '7zvy^s=_m@+ethep_j3u1bs#1lmxbgzh*!1=m255g$ug_mo75#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ['DEBUG']
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -57,17 +59,21 @@ WSGI_APPLICATION = 'alquileres.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'alquileres',
+        'USER': os.environ['USER_DB'],
+        'PASSWORD': os.environ['PASS_DB'],
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-CO'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
